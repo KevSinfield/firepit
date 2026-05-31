@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Firepit — Wood-Fired Pizza</title>
-<meta name="description" content="Firepit — proper wood-fired pizza from our mobile oven. Reserve your pizza or book the truck for your event.">
+<title>The Fire Kitchen — Wood-Fired Pizza</title>
+<meta name="description" content="The Fire Kitchen — proper wood-fired pizza from our mobile oven. Reserve your pizza or book the truck for your event.">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,800;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,8 +44,8 @@
 
   /* logo */
   .logo{display:flex;align-items:center;gap:11px}
-  .logo svg{width:36px;height:36px;display:block}
-  .logo-word{font-weight:900;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
+  .logo img{height:50px;width:auto;display:block}
+  footer .logo img{height:42px}
 
   /* nav */
   header.nav{position:sticky;top:0;z-index:50;background:rgba(27,23,21,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -215,7 +216,7 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Firepit home"><svg><use href="#flame"/></svg><span class="logo-word">Firepit</span></a>
+    <a class="logo" href="#top" aria-label="The Fire Kitchen home"><img src="logo-full.png" alt="The Fire Kitchen"></a>
     <button id="navToggle" aria-label="Menu">☰</button>
     <nav id="navMenu">
       <a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#find">Find us</a><a href="#about">About</a><a href="#events">Book the truck</a>
@@ -269,9 +270,9 @@
     <div class="head">
       <span class="eyebrow">See it in action</span>
       <h2>Fresh from the flame</h2>
-      <p>There's nothing like a wood-fired pizza coming out the oven. Here's the kind of fire-side theatre to expect from the Firepit truck.</p>
+      <p>There's nothing like a wood-fired pizza coming out the oven. Here's the kind of fire-side theatre to expect from The Fire Kitchen truck.</p>
     </div>
-    <!-- PLACEHOLDER VIDEO: swap the embed ID below for Firepit's own footage when ready -->
+    <!-- PLACEHOLDER VIDEO: swap the embed ID below for The Fire Kitchen's own footage when ready -->
     <div class="video-frame">
       <iframe src="https://www.youtube-nocookie.com/embed/RD075dnLtF4?rel=0" title="Wood-fired pizza truck" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
@@ -283,7 +284,7 @@
   <div class="wrap">
     <div class="shead">
       <div><span class="eyebrow">The menu</span><h2 style="margin-top:.3em">Our pizzas</h2></div>
-      <p>A sample menu to show the layout — we'll swap in Firepit's real pizzas and prices.</p>
+      <p>A sample menu to show the layout — we'll swap in The Fire Kitchen's real pizzas and prices.</p>
     </div>
     <div class="menu-list">
       <div class="row-item"><span class="idx">01</span><div><h3>Margherita <span class="chip v">Veggie</span></h3><p>San Marzano tomato, fior di latte, fresh basil, olive oil.</p></div><span class="price">£9</span></div>
@@ -302,7 +303,7 @@
     <div class="head">
       <span class="eyebrow">The good stuff</span>
       <h2>Straight off the peel</h2>
-      <p>A few from the Firepit oven — real pizzas, real fire, real events.</p>
+      <p>A few from The Fire Kitchen oven — real pizzas, real fire, real events.</p>
     </div>
     <div class="gallery-grid">
       <a href="gallery-1.jpg"><img src="gallery-1.jpg" alt="Pepperoni pizza fresh from the oven" loading="lazy"></a>
@@ -378,12 +379,12 @@
 
 <section id="about" class="about">
   <div class="wrap">
-    <div class="about-img"><img src="story.jpg" alt="Firepit pizzas lined up at an outdoor event"></div>
+    <div class="about-img"><img src="story.jpg" alt="The Fire Kitchen pizzas lined up at an outdoor event"></div>
     <div>
       <span class="eyebrow">Our story</span>
       <h2 style="margin-top:.25em">Born from a love of fire and dough</h2>
       <span class="ph">Placeholder — Craig &amp; Amy's real story goes here</span>
-      <p>Firepit started with a simple obsession: pizza cooked properly, over real wood flame. After years of tinkering with dough recipes and feeding friends from a tiny garden oven, we built a mobile pizzeria to bring that fire-blistered pizza to the streets.</p>
+      <p>The Fire Kitchen started with a simple obsession: pizza cooked properly, over real wood flame. After years of tinkering with dough recipes and feeding friends from a tiny garden oven, we built a mobile pizzeria to bring that fire-blistered pizza to the streets.</p>
       <p>Every dough is slow-proved for 48 hours, topped with the best ingredients we can find, and cooked in front of you in 90 seconds. No shortcuts, no fuss — just proper pizza and a bit of fire-side theatre.</p>
     </div>
   </div>
@@ -397,14 +398,14 @@
       <a class="btn btn-primary" href="#" id="eventBtn">Enquire about your event</a>
       <a class="btn btn-ghost" href="#reserve">Or reserve a pizza</a>
     </div>
-    <p class="cl">Or just say hello — <a href="#" id="emailLink">hello@firepit.co.uk</a> · <a href="#">07000 000000</a></p>
+    <p class="cl">Or just say hello — <a href="#" id="emailLink">hello@thefirekitchen.co.uk</a> · <a href="#">07000 000000</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="#top"><svg style="width:30px;height:30px"><use href="#flame"/></svg><span class="logo-word">Firepit</span></a>
-    <span>© <span id="yr"></span> Firepit · Wood-fired pizza · UK</span>
+    <a class="logo" href="#top"><img src="logo-full.png" alt="The Fire Kitchen"></a>
+    <span>© <span id="yr"></span> The Fire Kitchen · Wood-fired pizza · UK</span>
     <span><a href="#menu">Menu</a> · <a href="#reserve">Reserve</a> · <a href="#events">Events</a></span>
   </div>
 </footer>
@@ -415,9 +416,9 @@
   toggle.addEventListener('click',()=>menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
 
-  const BUSINESS_EMAIL='hello@firepit.co.uk';
+  const BUSINESS_EMAIL='hello@thefirekitchen.co.uk';
   const el=document.getElementById('emailLink'); el.textContent=BUSINESS_EMAIL; el.href='mailto:'+BUSINESS_EMAIL;
-  document.getElementById('eventBtn').href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Event enquiry — Firepit')+'&body='+encodeURIComponent('Hi Firepit,\n\nDate of event:\nLocation:\nApprox guests:\nA bit about the event:\n\nThanks!');
+  document.getElementById('eventBtn').href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Event enquiry — The Fire Kitchen')+'&body='+encodeURIComponent('Hi,\n\nDate of event:\nLocation:\nApprox guests:\nA bit about the event:\n\nThanks!');
 
   // ---- gallery lightbox popup ----
   (function(){
