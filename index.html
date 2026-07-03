@@ -281,16 +281,16 @@
           <svg class="hero-svg" viewBox="0 -30 620 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stone-baked pepperoni pizza on a peel">
             <defs>
               <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#bd8d55"/><stop offset=".5" stop-color="#8a5a2e"/><stop offset="1" stop-color="#6b4220"/>
+                <stop offset="0" stop-color="#cf9c5f"/><stop offset=".5" stop-color="#a06c3a"/><stop offset="1" stop-color="#7c4f28"/>
               </linearGradient>
               <clipPath id="pzclip"><circle cx="410" cy="250" r="200"/></clipPath>
             </defs>
-            <!-- wooden peel -->
+            <!-- wooden peel: handle (stroked line) + round blade -->
             <g class="peel-wood">
-              <rect x="0" y="-23" width="371" height="46" rx="23" fill="url(#wood)" transform="translate(360 330) rotate(137)"/>
-              <circle cx="89" cy="582" r="27" fill="url(#wood)"/>
-              <circle cx="410" cy="250" r="224" fill="url(#wood)"/>
-              <circle cx="410" cy="250" r="224" fill="none" stroke="#4f3115" stroke-width="3" opacity=".45"/>
+              <line x1="350" y1="330" x2="72" y2="588" stroke="url(#wood)" stroke-width="46" stroke-linecap="round"/>
+              <line x1="350" y1="330" x2="72" y2="588" stroke="#5a3a1c" stroke-width="46" stroke-linecap="round" opacity=".18"/>
+              <circle cx="410" cy="250" r="230" fill="url(#wood)"/>
+              <circle cx="410" cy="250" r="230" fill="none" stroke="#4f3115" stroke-width="3" opacity=".4"/>
             </g>
             <!-- pizza -->
             <image href="hero.jpg" x="210" y="50" width="400" height="400" clip-path="url(#pzclip)" preserveAspectRatio="xMidYMid slice"/>
