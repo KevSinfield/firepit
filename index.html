@@ -58,15 +58,16 @@
   #navToggle{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer}
 
   /* hero */
-  .hero{position:relative;background:radial-gradient(125% 95% at 78% 8%,#3a2418 0%,#1b1715 56%);color:var(--cream);overflow:hidden;border-bottom:1px solid var(--line-d)}
-  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(58% 50% at 80% 80%,rgba(226,98,15,.34),transparent 70%);pointer-events:none}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:110px 26px 100px}
-  .hero .tag{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.45em 1em;font-size:.78rem;color:#e7d8c4;margin-bottom:26px}
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);overflow:hidden;background:#1b1715 url(video-poster.jpg) center/cover;border-bottom:1px solid var(--line-d)}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(.5) brightness(.55) contrast(1.03)}
+  .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,15,12,.62) 0%,rgba(20,15,12,.82) 100%),radial-gradient(75% 65% at 50% 42%,rgba(226,98,15,.16),transparent 70%)}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:880px;margin:0 auto;padding:120px 26px 118px}
+  .hero .tag{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.45em 1em;font-size:.78rem;color:#eaddca;margin-bottom:26px;background:rgba(0,0,0,.22);backdrop-filter:blur(2px)}
   .hero .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--ember-2);box-shadow:0 0 10px var(--ember-2)}
-  .hero h1{font-size:clamp(3.2rem,7vw,5.6rem);font-weight:900;margin-bottom:.3em}
+  .hero h1{font-size:clamp(3rem,6.6vw,5.6rem);font-weight:900;margin:0 auto .32em;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
   .hero h1 em{font-style:italic;color:var(--ember-2)}
-  .hero p.lede{font-size:1.2rem;color:#e7d8c4;max-width:34ch}
-  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .hero p.lede{font-size:1.22rem;color:#ecdfcc;max-width:46ch;margin:0 auto;text-shadow:0 1px 16px rgba(0,0,0,.4)}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;justify-content:center}
   .hero-art{display:flex;justify-content:center}
   .hero-float{width:100%;max-width:440px}
   .peel-stage{position:relative;width:100%}
@@ -225,8 +226,8 @@
   .js-anim [data-rv].in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
     .js-anim [data-rv]{opacity:1!important;transform:none!important;transition:none!important}
-    .hero .tag,.hero h1,.hero p.lede,.hero .cta,.hero-float,.peel-stage,.hero .tag .dot,.marquee div{animation:none!important}
-    .steam{display:none!important}
+    .hero .tag,.hero h1,.hero p.lede,.hero .cta,.hero .tag .dot,.marquee div{animation:none!important}
+    .hero-bg{display:none!important}
   }
 
   @media(max-width:860px){
@@ -264,41 +265,18 @@
   </div>
 </header>
 
-<section class="hero" id="top" style="padding:0">
-  <div class="wrap">
-    <div>
-      <span class="tag"><span class="dot"></span> Mobile stone-baked pizza · Essex</span>
-      <h1>Proper pizza,<br>straight from the <em>fire</em>.</h1>
-      <p class="lede">Hand-stretched dough, stone-baked in our mobile oven. Catch the truck, or pre-order your pizzas ahead of time.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#reserve">Reserve a pizza</a>
-        <a class="btn btn-ghost" href="#menu">See the menu</a>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="hero-float">
-        <div class="peel-stage">
-          <svg class="hero-svg" viewBox="0 -30 620 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stone-baked pepperoni pizza on a peel">
-            <defs>
-              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#cf9c5f"/><stop offset=".5" stop-color="#a06c3a"/><stop offset="1" stop-color="#7c4f28"/>
-              </linearGradient>
-              <clipPath id="pzclip"><circle cx="410" cy="250" r="200"/></clipPath>
-            </defs>
-            <!-- wooden peel: handle (stroked line) + round blade -->
-            <g class="peel-wood">
-              <line x1="350" y1="330" x2="72" y2="588" stroke="url(#wood)" stroke-width="46" stroke-linecap="round"/>
-              <line x1="350" y1="330" x2="72" y2="588" stroke="#5a3a1c" stroke-width="46" stroke-linecap="round" opacity=".18"/>
-              <circle cx="410" cy="250" r="230" fill="url(#wood)"/>
-              <circle cx="410" cy="250" r="230" fill="none" stroke="#4f3115" stroke-width="3" opacity=".4"/>
-            </g>
-            <!-- pizza -->
-            <image href="hero.jpg" x="210" y="50" width="400" height="400" clip-path="url(#pzclip)" preserveAspectRatio="xMidYMid slice"/>
-            <circle cx="410" cy="250" r="200" fill="none" stroke="#2a1a0e" stroke-width="3" opacity=".35"/>
-          </svg>
-          <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
-        </div>
-      </div>
+<section class="hero" id="top">
+  <video class="hero-bg" autoplay muted loop playsinline poster="video-poster.jpg">
+    <source src="hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <span class="tag"><span class="dot"></span> Mobile stone-baked pizza · Essex</span>
+    <h1>Proper pizza,<br>straight from the <em>fire</em>.</h1>
+    <p class="lede">Hand-stretched dough, stone-baked in our mobile oven. Catch the truck, or pre-order your pizzas ahead of time.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#reserve">Reserve a pizza</a>
+      <a class="btn btn-ghost" href="#menu">See the menu</a>
     </div>
   </div>
 </section>
