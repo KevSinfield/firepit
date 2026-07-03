@@ -190,6 +190,28 @@
   footer .logo-word{color:var(--cream);font-size:1.2rem}
   footer a:hover{color:var(--ember-2)}
 
+  /* ---------- ANIMATIONS ---------- */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,147,49,.55)}70%{box-shadow:0 0 0 9px rgba(245,147,49,0)}100%{box-shadow:0 0 0 0 rgba(245,147,49,0)}}
+
+  /* hero entrance (above the fold) */
+  .hero .tag{animation:fadeUp .7s both .05s}
+  .hero h1{animation:fadeUp .8s both .16s}
+  .hero p.lede{animation:fadeUp .8s both .3s}
+  .hero .cta{animation:fadeUp .8s both .44s}
+  .hero-art img{animation:fadeIn 1s both .35s, floaty 6s ease-in-out 1.3s infinite}
+  .hero .tag .dot{animation:pulse 2.4s ease-out infinite}
+
+  /* scroll reveal (JS adds .js-anim to body, data-rv to targets, .in when visible) */
+  .js-anim [data-rv]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js-anim [data-rv].in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .js-anim [data-rv]{opacity:1!important;transform:none!important;transition:none!important}
+    .hero .tag,.hero h1,.hero p.lede,.hero .cta,.hero-art img,.hero .tag .dot,.marquee div{animation:none!important}
+  }
+
   @media(max-width:860px){
     .hero .wrap,.find .wrap,.about .wrap{grid-template-columns:1fr}
     .hero-art{order:-1;max-width:260px;margin:0 auto}
@@ -412,6 +434,32 @@
 
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // ---- scroll-reveal animations ----
+  (function(){
+    if(!('IntersectionObserver' in window)) return;
+    document.body.classList.add('js-anim');
+    // [selector, stagger-ms between items in that group]
+    const groups=[
+      ['.shead',0],['.video .head',0],['.reserve .head',0],['.gallery .head',0],
+      ['.feats .item',90],['.video-frame',0],['.row-item',55],['.gallery-grid a',70],
+      ['.form-card',0],['.find .wrap > div',120],
+      ['.about-img',0],['.about .wrap > div:last-child',0],
+      ['.events h2',0],['.events p',0],['.events .cta',0]
+    ];
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    const seen=new Set();
+    groups.forEach(([sel,stagger])=>{
+      document.querySelectorAll(sel).forEach((el,i)=>{
+        if(seen.has(el)) return; seen.add(el);
+        el.setAttribute('data-rv','');
+        if(stagger) el.style.transitionDelay=((i%6)*stagger)+'ms';
+        io.observe(el);
+      });
+    });
+  })();
   const toggle=document.getElementById('navToggle'),menu=document.getElementById('navMenu');
   toggle.addEventListener('click',()=>menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
