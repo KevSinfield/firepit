@@ -68,7 +68,12 @@
   .hero p.lede{font-size:1.2rem;color:#e7d8c4;max-width:34ch}
   .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
   .hero-art{display:flex;justify-content:center}
-  .hero-art img{width:100%;max-width:400px;aspect-ratio:1/1;object-fit:cover;border-radius:50%;border:6px solid rgba(251,244,233,.12);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+  .hero-float{width:100%;max-width:440px}
+  .peel-stage{position:relative;width:100%}
+  .hero-svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 26px 44px rgba(0,0,0,.5))}
+  .steam{position:absolute;top:4%;left:66%;transform:translateX(-50%);display:flex;gap:20px;pointer-events:none;z-index:4}
+  .steam span{width:9px;height:66px;border-radius:9px;background:linear-gradient(to top,rgba(255,246,235,0),rgba(255,246,235,.3));filter:blur(5px);opacity:0}
+  .steam span:nth-child(2){height:82px}
 
   /* marquee */
   .marquee{border-bottom:1px solid var(--line-d);background:var(--char-2);overflow:hidden;white-space:nowrap;padding:17px 0}
@@ -206,7 +211,13 @@
   .hero h1{animation:fadeUp .8s both .16s}
   .hero p.lede{animation:fadeUp .8s both .3s}
   .hero .cta{animation:fadeUp .8s both .44s}
-  .hero-art img{animation:fadeIn 1s both .35s, floaty 6s ease-in-out 1.3s infinite}
+  .hero-float{animation:floaty 6s ease-in-out 1.6s infinite}
+  .peel-stage{animation:peelIn 1.15s cubic-bezier(.2,.85,.3,1) .35s both}
+  .steam span{animation:steam 3.6s ease-in-out infinite}
+  .steam span:nth-child(2){animation-delay:.8s}
+  .steam span:nth-child(3){animation-delay:1.6s}
+  @keyframes peelIn{0%{opacity:0;transform:translate(-26px,46px) rotate(-9deg)}55%{opacity:1}100%{opacity:1;transform:translate(0,0) rotate(0)}}
+  @keyframes steam{0%{opacity:0;transform:translateY(12px) scaleY(.7)}30%{opacity:.65}100%{opacity:0;transform:translateY(-32px) scaleY(1.2)}}
   .hero .tag .dot{animation:pulse 2.4s ease-out infinite}
 
   /* scroll reveal (JS adds .js-anim to body, data-rv to targets, .in when visible) */
@@ -214,7 +225,8 @@
   .js-anim [data-rv].in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
     .js-anim [data-rv]{opacity:1!important;transform:none!important;transition:none!important}
-    .hero .tag,.hero h1,.hero p.lede,.hero .cta,.hero-art img,.hero .tag .dot,.marquee div{animation:none!important}
+    .hero .tag,.hero h1,.hero p.lede,.hero .cta,.hero-float,.peel-stage,.hero .tag .dot,.marquee div{animation:none!important}
+    .steam{display:none!important}
   }
 
   @media(max-width:860px){
@@ -264,7 +276,29 @@
       </div>
     </div>
     <div class="hero-art">
-      <img src="hero.jpg" alt="Stone-baked pepperoni pizza fresh from the oven" loading="eager">
+      <div class="hero-float">
+        <div class="peel-stage">
+          <svg class="hero-svg" viewBox="0 -30 620 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stone-baked pepperoni pizza on a peel">
+            <defs>
+              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#bd8d55"/><stop offset=".5" stop-color="#8a5a2e"/><stop offset="1" stop-color="#6b4220"/>
+              </linearGradient>
+              <clipPath id="pzclip"><circle cx="410" cy="250" r="200"/></clipPath>
+            </defs>
+            <!-- wooden peel -->
+            <g class="peel-wood">
+              <rect x="0" y="-23" width="371" height="46" rx="23" fill="url(#wood)" transform="translate(360 330) rotate(137)"/>
+              <circle cx="89" cy="582" r="27" fill="url(#wood)"/>
+              <circle cx="410" cy="250" r="224" fill="url(#wood)"/>
+              <circle cx="410" cy="250" r="224" fill="none" stroke="#4f3115" stroke-width="3" opacity=".45"/>
+            </g>
+            <!-- pizza -->
+            <image href="hero.jpg" x="210" y="50" width="400" height="400" clip-path="url(#pzclip)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="410" cy="250" r="200" fill="none" stroke="#2a1a0e" stroke-width="3" opacity=".35"/>
+          </svg>
+          <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
