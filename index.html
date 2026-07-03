@@ -89,7 +89,7 @@
   .video .head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;margin:.25em 0 .3em}
   .video .head p{color:var(--muted);font-size:1.05rem}
   .video-frame{max-width:960px;margin:0 auto;position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 50px rgba(120,70,20,.16)}
-  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-frame iframe,.video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover;background:#000}
   .video-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:18px;font-style:italic}
 
   /* section heads */
@@ -299,11 +299,13 @@
       <h2>Fresh from the flame</h2>
       <p>There's nothing like a pizza coming straight off the stone. This is what to expect when The Fire Kitchen truck rolls up.</p>
     </div>
-    <!-- PLACEHOLDER VIDEO: swap the embed ID below for The Fire Kitchen's own footage when ready -->
     <div class="video-frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/RD075dnLtF4?rel=0" title="Pizza truck video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <video controls playsinline preload="metadata" poster="video-poster.jpg">
+        <source src="fire-kitchen.mp4" type="video/mp4">
+        Your browser doesn't support this video.
+      </video>
     </div>
-    <p class="video-note">A taste of what to expect from the truck. Our own footage coming soon.</p>
+    <p class="video-note">Filmed at the truck: dough, fire and fresh pizza.</p>
   </div>
 </section>
 
@@ -406,7 +408,7 @@
 
 <section id="about" class="about">
   <div class="wrap">
-    <div class="about-img"><img src="story.jpg" alt="The Fire Kitchen pizzas lined up at an outdoor event"></div>
+    <div class="about-img"><img src="about-craft.jpg" alt="Hand-stretching pizza dough at The Fire Kitchen"></div>
     <div>
       <span class="eyebrow">Our story</span>
       <h2 style="margin-top:.25em">It started with a garden oven</h2>
