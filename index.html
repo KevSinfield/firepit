@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Fire Kitchen | Wood-Fired Pizza</title>
-<meta name="description" content="The Fire Kitchen. Proper wood-fired pizza from our mobile oven. Reserve yours, or book the truck for your event.">
+<title>The Fire Kitchen | Stone-Baked Pizza</title>
+<meta name="description" content="The Fire Kitchen. Proper stone-baked pizza from our mobile oven in Essex. Pre-order yours, or book the truck for your event.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,6 +149,11 @@
   .field input::placeholder,.field textarea::placeholder{color:#9c8b78}
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember-2);background:rgba(255,255,255,.1)}
   .field select option{color:#1b1715}
+  .order{display:flex;flex-direction:column;gap:9px}
+  .order-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.04)}
+  .order-row .oi{font-size:.98rem}.order-row .oi b{font-weight:600}.order-row .oi span{color:#b7a893;font-size:.85rem;margin-left:6px}
+  .order-row input{width:66px;text-align:center;font-family:'Inter';font-size:1rem;padding:.45em;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff}
+  .order-row input:focus{outline:none;border-color:var(--ember-2)}
   .form-card .btn-primary{width:100%;justify-content:center;margin-top:6px;font-size:1.05rem}
   .form-msg{text-align:center;margin-top:18px;font-weight:600;color:var(--ember-2);min-height:1.2em}
   .form-fine{text-align:center;color:#9c8b78;font-size:.82rem;margin-top:14px}
@@ -250,30 +255,30 @@
 <section class="hero" id="top" style="padding:0">
   <div class="wrap">
     <div>
-      <span class="tag"><span class="dot"></span> Mobile wood-fired pizza · UK</span>
+      <span class="tag"><span class="dot"></span> Mobile stone-baked pizza · Essex</span>
       <h1>Proper pizza,<br>straight from the <em>fire</em>.</h1>
-      <p class="lede">Hand-stretched dough, blistered in 90 seconds in our wood-fired oven. Find the truck, or reserve your pizza ahead of time.</p>
+      <p class="lede">Hand-stretched dough, stone-baked in our mobile oven. Catch the truck, or pre-order your pizzas ahead of time.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#reserve">Reserve a pizza</a>
         <a class="btn btn-ghost" href="#menu">See the menu</a>
       </div>
     </div>
     <div class="hero-art">
-      <img src="hero.jpg" alt="Wood-fired pizza topped with burrata, prosciutto and rocket" loading="eager">
+      <img src="hero.jpg" alt="Stone-baked pizza topped with burrata, prosciutto and rocket" loading="eager">
     </div>
   </div>
 </section>
 
 <div class="marquee"><div>
-  <span>Wood-fired</span><span>·</span><span><b>48hr dough</b></span><span>·</span><span>450°C</span><span>·</span><span>90-second bake</span><span>·</span><span><b>Reserve ahead</b></span><span>·</span><span>Book the truck</span><span>·</span>
-  <span>Wood-fired</span><span>·</span><span><b>48hr dough</b></span><span>·</span><span>450°C</span><span>·</span><span>90-second bake</span><span>·</span><span><b>Reserve ahead</b></span><span>·</span><span>Book the truck</span><span>·</span>
+  <span>Stone baked</span><span>·</span><span><b>48hr dough</b></span><span>·</span><span>450°C</span><span>·</span><span>90-second bake</span><span>·</span><span><b>Reserve ahead</b></span><span>·</span><span>Book the truck</span><span>·</span>
+  <span>Stone baked</span><span>·</span><span><b>48hr dough</b></span><span>·</span><span>450°C</span><span>·</span><span>90-second bake</span><span>·</span><span><b>Reserve ahead</b></span><span>·</span><span>Book the truck</span><span>·</span>
 </div></div>
 
 <section class="feats">
   <div class="wrap">
     <div class="item">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c1 4-2 5-3 8s2 6 3 6 4-3 3-6-2-4-3-8z"/><path d="M6 14a6 6 0 0 0 12 0"/></svg>
-      <h3>Real wood fire</h3><p>Cooked at 450°C over live flame, so you get a leopard-spotted crust that's smoky on the outside and soft in the middle.</p>
+      <h3>Stone baked</h3><p>Cooked at 450°C over live flame, so you get a leopard-spotted crust that's smoky on the outside and soft in the middle.</p>
     </div>
     <div class="item">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -292,11 +297,11 @@
     <div class="head">
       <span class="eyebrow">See it in action</span>
       <h2>Fresh from the flame</h2>
-      <p>There's nothing like a pizza coming straight out of the wood fire. This is what to expect when The Fire Kitchen truck rolls up.</p>
+      <p>There's nothing like a pizza coming straight off the stone. This is what to expect when The Fire Kitchen truck rolls up.</p>
     </div>
     <!-- PLACEHOLDER VIDEO: swap the embed ID below for The Fire Kitchen's own footage when ready -->
     <div class="video-frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/RD075dnLtF4?rel=0" title="Wood-fired pizza truck" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/RD075dnLtF4?rel=0" title="Pizza truck video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <p class="video-note">Placeholder clip. We'll swap in your own footage of Craig and Amy's oven and pizzas.</p>
   </div>
@@ -309,12 +314,12 @@
       <p>A sample menu to show the layout. We'll drop in The Fire Kitchen's real pizzas and prices.</p>
     </div>
     <div class="menu-list">
-      <div class="row-item"><span class="idx">01</span><div><h3>Margherita <span class="chip v">Veggie</span></h3><p>San Marzano tomato, fior di latte, fresh basil, olive oil.</p></div><span class="price">£9</span></div>
-      <div class="row-item"><span class="idx">02</span><div><h3>Nduja &amp; Honey <span class="chip">Spicy</span></h3><p>Spicy Calabrian nduja, mozzarella, a drizzle of hot honey.</p></div><span class="price">£12</span></div>
-      <div class="row-item"><span class="idx">03</span><div><h3>Pepperoni</h3><p>Double pepperoni, mozzarella, tomato, oregano.</p></div><span class="price">£11</span></div>
-      <div class="row-item"><span class="idx">04</span><div><h3>Funghi <span class="chip v">Veggie</span></h3><p>Roasted mushrooms, garlic, mozzarella, thyme, truffle oil.</p></div><span class="price">£11</span></div>
-      <div class="row-item"><span class="idx">05</span><div><h3>Garden <span class="chip vg">Vegan</span></h3><p>Roasted peppers, courgette, red onion, vegan mozzarella.</p></div><span class="price">£11</span></div>
-      <div class="row-item"><span class="idx">06</span><div><h3>Bianca <span class="chip v">Veggie</span></h3><p>White base, ricotta, mozzarella, rosemary, sea salt.</p></div><span class="price">£10</span></div>
+      <div class="row-item"><span class="idx">01</span><div><h3>Margherita <span class="chip v">Veggie</span></h3><p>Tomato, mozzarella, fresh basil.</p></div><span class="price">£10</span></div>
+      <div class="row-item"><span class="idx">02</span><div><h3>Pepperoni</h3><p>Pepperoni, mozzarella, tomato.</p></div><span class="price">£12</span></div>
+      <div class="row-item"><span class="idx">03</span><div><h3>Ham &amp; Mushroom</h3><p>Ham, mushroom, mozzarella, tomato.</p></div><span class="price">£12</span></div>
+      <div class="row-item"><span class="idx">04</span><div><h3>Spicy Beef <span class="chip">Spicy</span></h3><p>Spiced beef, mozzarella, tomato.</p></div><span class="price">£13</span></div>
+      <div class="row-item"><span class="idx">05</span><div><h3>Nduja, Pepperoni &amp; Jalapeños <span class="chip">Spicy</span></h3><p>Nduja, pepperoni, jalapeños, mozzarella.</p></div><span class="price">£14</span></div>
+      <div class="row-item"><span class="idx">06</span><div><h3>Weekly Special</h3><p>A different one each week. Ask on the day.</p></div><span class="price">Ask</span></div>
     </div>
     <p class="menu-note">Gluten-free bases available on request. <span class="chip">GF option</span></p>
   </div>
@@ -330,7 +335,7 @@
     <div class="gallery-grid">
       <a href="gallery-1.jpg"><img src="gallery-1.jpg" alt="Pepperoni pizza fresh from the oven" loading="lazy"></a>
       <a href="gallery-2.jpg"><img src="gallery-2.jpg" alt="Pepperoni pizza on a serving tray" loading="lazy"></a>
-      <a href="gallery-3.jpg"><img src="gallery-3.jpg" alt="A spread of wood-fired pizzas" loading="lazy"></a>
+      <a href="gallery-3.jpg"><img src="gallery-3.jpg" alt="A spread of stone-baked pizzas" loading="lazy"></a>
       <a href="gallery-4.jpg"><img src="gallery-4.jpg" alt="White pizza with herbs being sliced" loading="lazy"></a>
       <a href="gallery-5.jpg"><img src="gallery-5.jpg" alt="Vibrant tomato and pepperoni pizza top-down" loading="lazy"></a>
       <a href="gallery-6.jpg"><img src="gallery-6.jpg" alt="Prosciutto and rocket pizza on an orange plate" loading="lazy"></a>
@@ -348,30 +353,33 @@
 <section id="reserve" class="reserve">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">Reserve a pizza</span>
+      <span class="eyebrow">Pre-order</span>
       <h2>Skip the queue</h2>
-      <p>Tell us what you fancy and when you'll collect. We'll have it ready, and you pay when you pick it up.</p>
+      <p>Pick your pizzas and a collection time. We'll have your order ready and you pay when you pick it up. Pre-orders need to be in by the day before, please.</p>
     </div>
     <form class="form-card" id="reserveForm" novalidate>
       <div class="grid2">
         <div class="field"><label for="name">Your name</label><input id="name" type="text" placeholder="Jane Smith" required></div>
         <div class="field"><label for="contact">Phone or email</label><input id="contact" type="text" placeholder="07… or you@email.com" required></div>
       </div>
-      <div class="grid2">
-        <div class="field"><label for="pizza">Pizza</label><select id="pizza" required>
-          <option value="" disabled selected>Choose…</option>
-          <option>Margherita — £9</option><option>Nduja &amp; Honey — £12</option><option>Pepperoni — £11</option>
-          <option>Funghi — £11</option><option>Garden (vegan) — £11</option><option>Bianca — £10</option></select></div>
-        <div class="field"><label for="qty">How many?</label><select id="qty" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+      <div class="field"><label>Your order</label>
+        <div class="order">
+          <div class="order-row"><span class="oi"><b>Margherita</b><span>£10</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Margherita (£10)" aria-label="Margherita quantity"></div>
+          <div class="order-row"><span class="oi"><b>Pepperoni</b><span>£12</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Pepperoni (£12)" aria-label="Pepperoni quantity"></div>
+          <div class="order-row"><span class="oi"><b>Ham &amp; Mushroom</b><span>£12</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Ham &amp; Mushroom (£12)" aria-label="Ham and Mushroom quantity"></div>
+          <div class="order-row"><span class="oi"><b>Spicy Beef</b><span>£13</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Spicy Beef (£13)" aria-label="Spicy Beef quantity"></div>
+          <div class="order-row"><span class="oi"><b>Nduja, Pepperoni &amp; Jalapeños</b><span>£14</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Nduja, Pepperoni &amp; Jalapenos (£14)" aria-label="Nduja Pepperoni Jalapeños quantity"></div>
+          <div class="order-row"><span class="oi"><b>Weekly Special</b><span>ask on the day</span></span><input type="number" min="0" value="0" inputmode="numeric" data-item="Weekly Special" aria-label="Weekly Special quantity"></div>
+        </div>
       </div>
       <div class="grid2">
         <div class="field"><label for="date">Collection date</label><input id="date" type="date" required></div>
         <div class="field"><label for="time">Collection time</label><input id="time" type="time" required></div>
       </div>
       <div class="field"><label for="notes">Anything else?</label><textarea id="notes" placeholder="Allergies, extra toppings, where you'll find us…"></textarea></div>
-      <button type="submit" class="btn btn-primary">Send reservation</button>
+      <button type="submit" class="btn btn-primary">Send pre-order</button>
       <p class="form-msg" id="formMsg" role="status"></p>
-      <p class="form-fine">Opens your email app with the details ready to send. Can be swapped for instant online booking later.</p>
+      <p class="form-fine">This opens your email app with your order ready to send to us. General questions? Message us on WhatsApp instead.</p>
     </form>
   </div>
 </section>
@@ -381,20 +389,17 @@
     <div>
       <span class="eyebrow">Find us</span>
       <h2 style="margin-top:.25em">Where's the truck this week?</h2>
-      <p>We move around a lot: markets, regular pitches and private events. Here's a sample week. We'll keep it up to date and post each day's spot on socials.</p>
-      <a class="btn btn-dark" href="#reserve">Reserve for collection</a>
+      <p>We move around Essex: pub pitches, markets and private events. Here's where we'll be this week. We'll keep it updated and post each spot on socials.</p>
+      <a class="btn btn-dark" href="#reserve">Pre-order for collection</a>
       <div class="socials">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3v2H8v3h3v6h3v-6h2.5l.5-3H14v-1.3c0-.5.3-.7.8-.7z"/></svg></a>
+        <a href="https://www.instagram.com/theessexfirekitchen/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61575479413621" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3v2H8v3h3v6h3v-6h2.5l.5-3H14v-1.3c0-.5.3-.7.8-.7z"/></svg></a>
       </div>
     </div>
     <div class="sched">
-      <div class="r"><span class="day">Tuesday</span><span class="loc">Town Square Market · 5–9pm</span></div>
-      <div class="r live"><span class="day">Wednesday</span><span class="loc">The Old Brewery Yard · 5–9pm</span></div>
-      <div class="r"><span class="day">Thursday</span><span class="loc">Riverside Food Market · 4–9pm</span></div>
-      <div class="r"><span class="day">Friday</span><span class="loc">The Crown pub car park · 5–10pm</span></div>
-      <div class="r"><span class="day">Saturday</span><span class="loc">Private events (book below)</span></div>
-      <div class="r"><span class="day">Sunday</span><span class="loc">Farmers' Market · 11am–3pm</span></div>
+      <div class="r"><span class="day">Tuesday</span><span class="loc">The Crown · 6–8:30pm</span></div>
+      <div class="r"><span class="day">Wednesday</span><span class="loc">Chapel · 5–9pm</span></div>
+      <div class="r"><span class="day">More dates</span><span class="loc">Coming soon, follow us on socials</span></div>
     </div>
   </div>
 </section>
@@ -406,7 +411,7 @@
       <span class="eyebrow">Our story</span>
       <h2 style="margin-top:.25em">It started with a garden oven</h2>
       <span class="ph">Placeholder: Craig and Amy's real story goes here</span>
-      <p>The Fire Kitchen started with one obsession: pizza cooked properly, over real wood flame. After years of messing about with dough at home and feeding friends from a tiny garden oven, we built a mobile pizzeria and took it out on the road.</p>
+      <p>The Fire Kitchen started with one obsession: pizza cooked properly, stone-baked over a live flame. After years of messing about with dough at home and feeding friends from a tiny garden oven, we built a mobile pizzeria and took it out on the road.</p>
       <p>Every dough is slow-proved for 48 hours, topped with the best we can get our hands on, and cooked in front of you in about 90 seconds. No shortcuts, no fuss, just proper pizza cooked over fire.</p>
     </div>
   </div>
@@ -415,19 +420,19 @@
 <section id="events" class="events">
   <div class="wrap">
     <h2>Book the truck for your event</h2>
-    <p>Weddings, birthdays, work dos, festivals: we bring the oven, the dough and the fire, and feed your crowd fresh pizza all night. Send us the date and rough numbers and we'll put a quote together.</p>
+    <p>Weddings, birthdays, work dos, festivals: we bring the oven and feed your crowd fresh pizza all night. And it's not only pizza. We also do BBQs, paella and buffets. Send us the date and rough numbers and we'll put a quote together.</p>
     <div class="cta">
       <a class="btn btn-primary" href="#" id="eventBtn">Enquire about your event</a>
       <a class="btn btn-ghost" href="#reserve">Or reserve a pizza</a>
     </div>
-    <p class="cl">Or just say hello: <a href="#" id="emailLink">hello@thefirekitchen.co.uk</a> · <a href="#">07000 000000</a></p>
+    <p class="cl">Pre-orders by email: <a href="#" id="emailLink">hello@thefirekitchen.co.uk</a><br>General enquiries on WhatsApp: <a href="https://wa.me/447521044638" target="_blank" rel="noopener">07521 044638</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <a class="logo" href="#top"><img src="logo-full.png" alt="The Fire Kitchen"></a>
-    <span>© <span id="yr"></span> The Fire Kitchen · Wood-fired pizza · UK</span>
+    <span>© <span id="yr"></span> The Fire Kitchen · Stone-baked pizza · Essex</span>
     <span><a href="#menu">Menu</a> · <a href="#reserve">Reserve</a> · <a href="#events">Events</a></span>
   </div>
 </footer>
@@ -498,9 +503,13 @@
     e.preventDefault();
     if(!form.checkValidity()){form.reportValidity();return;}
     const g=id=>document.getElementById(id).value;
-    const body='Pizza reservation\n\nName: '+g('name')+'\nContact: '+g('contact')+'\nPizza: '+g('pizza')+'\nQuantity: '+g('qty')+'\nCollection: '+g('date')+' at '+g('time')+'\nNotes: '+(g('notes')||'—')+'\n';
-    window.location.href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Pizza reservation — '+g('name'))+'&body='+encodeURIComponent(body);
-    msg.textContent='Opening your email app to send the reservation…';
+    const order=[...document.querySelectorAll('.order input[type=number]')]
+      .filter(i=>parseInt(i.value||0,10)>0)
+      .map(i=>parseInt(i.value,10)+' x '+i.getAttribute('data-item'));
+    if(!order.length){ msg.textContent='Please add at least one pizza to your order.'; return; }
+    const body='Pizza pre-order\n\nName: '+g('name')+'\nContact: '+g('contact')+'\n\nOrder:\n  '+order.join('\n  ')+'\n\nCollection: '+g('date')+' at '+g('time')+'\nNotes: '+(g('notes')||'-')+'\n';
+    window.location.href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Pizza pre-order: '+g('name'))+'&body='+encodeURIComponent(body);
+    msg.textContent='Opening your email app to send your pre-order…';
   });
 </script>
 </body>
