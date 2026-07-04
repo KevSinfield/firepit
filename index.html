@@ -163,6 +163,8 @@
   .form-card .btn-primary{width:100%;justify-content:center;margin-top:6px;font-size:1.05rem}
   .form-msg{text-align:center;margin-top:18px;font-weight:600;color:var(--ember-2);min-height:1.2em}
   .form-fine{text-align:center;color:#9c8b78;font-size:.82rem;margin-top:14px}
+  .cutoff{display:flex;align-items:flex-start;gap:9px;margin:-2px 0 18px;padding:11px 13px;border-radius:11px;background:rgba(214,120,60,.12);border:1px solid rgba(214,120,60,.32);color:#ecccb4;font-size:.86rem;line-height:1.4}
+  .cutoff svg{flex:0 0 auto;width:16px;height:16px;margin-top:2px;stroke:var(--ember-2)}
 
   /* find us */
   .find .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
@@ -397,6 +399,7 @@
         <div class="field"><label for="slot">Collection day &amp; place</label><select id="slot" required></select></div>
         <div class="field"><label for="time">Collection time</label><select id="time" required disabled></select></div>
       </div>
+      <p class="cutoff"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Pre-orders close the day before. We can’t take orders on the day the truck’s out, so please get yours in by the evening before your collection date.</span></p>
       <div class="field"><label for="notes">Anything else?</label><textarea id="notes" placeholder="Allergies, extra toppings, where you'll find us…"></textarea></div>
       <button type="submit" class="btn btn-primary">Send pre-order</button>
       <p class="form-msg" id="formMsg" role="status"></p>
