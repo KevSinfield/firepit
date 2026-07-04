@@ -1,0 +1,16 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:80} {
+	root * /srv
+	encode zstd gzip
+	file_server
+
+	# long-cache static assets (images/videos/fonts)
+	@static path *.jpg *.jpeg *.png *.webp *.svg *.ico *.mp4 *.woff *.woff2
+	header @static Cache-Control "public, max-age=604800"
+	# always revalidate the HTML so updates show quickly
+	header /index.html Cache-Control "no-cache"
+}
