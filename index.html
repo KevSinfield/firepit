@@ -492,7 +492,9 @@
   // Pre-orders are emailed to hello@ via FormSubmit (activated 4 Jul 2026).
   const ORDER_EMAIL='hello@theessexfirekitchen.co.uk';
   const el=document.getElementById('emailLink'); el.textContent=BUSINESS_EMAIL; el.href='mailto:'+BUSINESS_EMAIL;
-  document.getElementById('eventBtn').href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Event enquiry — The Fire Kitchen')+'&body='+encodeURIComponent('Hi,\n\nDate of event:\nLocation:\nApprox guests:\nA bit about the event:\n\nThanks!');
+  const eventBtn=document.getElementById('eventBtn');
+  eventBtn.href="https://wa.me/447521044638?text="+encodeURIComponent("Hi, I'd like to enquire about booking The Fire Kitchen for an event.\n\nDate:\nLocation:\nApprox guests:\nType of event:\n\nThanks!");
+  eventBtn.target="_blank"; eventBtn.rel="noopener";
 
   // ---- gallery lightbox popup ----
   (function(){
