@@ -445,7 +445,7 @@
       <a class="btn btn-primary" href="#" id="eventBtn">Enquire about your event</a>
       <a class="btn btn-ghost" href="#reserve">Or reserve a pizza</a>
     </div>
-    <p class="cl">Pre-orders by email: <a href="#" id="emailLink">hello@thefirekitchen.co.uk</a><br>General enquiries on WhatsApp: <a href="https://wa.me/447521044638" target="_blank" rel="noopener">07521 044638</a></p>
+    <p class="cl">Pre-orders by email: <a href="#" id="emailLink">hello@theessexfirekitchen.co.uk</a><br>General enquiries on WhatsApp: <a href="https://wa.me/447521044638" target="_blank" rel="noopener">07521 044638</a></p>
   </div>
 </section>
 
@@ -489,7 +489,10 @@
   toggle.addEventListener('click',()=>menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
 
-  const BUSINESS_EMAIL='hello@thefirekitchen.co.uk';
+  const BUSINESS_EMAIL='hello@theessexfirekitchen.co.uk';
+  // TEMP: pre-order form recipient overridden to Kev's Gmail for testing.
+  // Revert ORDER_EMAIL to BUSINESS_EMAIL once hello@theessexfirekitchen.co.uk mailbox is live.
+  const ORDER_EMAIL='kevsinfield@gmail.com';
   const el=document.getElementById('emailLink'); el.textContent=BUSINESS_EMAIL; el.href='mailto:'+BUSINESS_EMAIL;
   document.getElementById('eventBtn').href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Event enquiry — The Fire Kitchen')+'&body='+encodeURIComponent('Hi,\n\nDate of event:\nLocation:\nApprox guests:\nA bit about the event:\n\nThanks!');
 
@@ -528,7 +531,7 @@
       .map(i=>parseInt(i.value,10)+' x '+i.getAttribute('data-item'));
     if(!order.length){ msg.textContent='Please add at least one pizza to your order.'; return; }
     const body='Pizza pre-order\n\nName: '+g('name')+'\nContact: '+g('contact')+'\n\nOrder:\n  '+order.join('\n  ')+'\n\nCollection: '+g('date')+' at '+g('time')+'\nNotes: '+(g('notes')||'-')+'\n';
-    window.location.href='mailto:'+BUSINESS_EMAIL+'?subject='+encodeURIComponent('Pizza pre-order: '+g('name'))+'&body='+encodeURIComponent(body);
+    window.location.href='mailto:'+ORDER_EMAIL+'?subject='+encodeURIComponent('Pizza pre-order: '+g('name'))+'&body='+encodeURIComponent(body);
     msg.textContent='Opening your email app to send your pre-order…';
   });
 </script>
