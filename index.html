@@ -400,7 +400,7 @@
       <div class="field"><label for="notes">Anything else?</label><textarea id="notes" placeholder="Allergies, extra toppings, where you'll find us…"></textarea></div>
       <button type="submit" class="btn btn-primary">Send pre-order</button>
       <p class="form-msg" id="formMsg" role="status"></p>
-      <p class="form-fine">This opens your email app with your order ready to send to us. General questions? Message us on WhatsApp instead.</p>
+      <p class="form-fine">We’ll get your pre-order straight away and confirm by phone or email. General questions? Message us on WhatsApp instead.</p>
     </form>
   </div>
 </section>
@@ -522,7 +522,7 @@
   })();
 
   const form=document.getElementById('reserveForm'),msg=document.getElementById('formMsg');
-  form.addEventListener('submit',e=>{
+  form.addEventListener('submit',async e=>{
     e.preventDefault();
     if(!form.checkValidity()){form.reportValidity();return;}
     const g=id=>document.getElementById(id).value;
@@ -530,9 +530,33 @@
       .filter(i=>parseInt(i.value||0,10)>0)
       .map(i=>parseInt(i.value,10)+' x '+i.getAttribute('data-item'));
     if(!order.length){ msg.textContent='Please add at least one pizza to your order.'; return; }
-    const body='Pizza pre-order\n\nName: '+g('name')+'\nContact: '+g('contact')+'\n\nOrder:\n  '+order.join('\n  ')+'\n\nCollection: '+g('date')+' at '+g('time')+'\nNotes: '+(g('notes')||'-')+'\n';
-    window.location.href='mailto:'+ORDER_EMAIL+'?subject='+encodeURIComponent('Pizza pre-order: '+g('name'))+'&body='+encodeURIComponent(body);
-    msg.textContent='Opening your email app to send your pre-order…';
+    const btn=form.querySelector('button[type=submit]');
+    btn.disabled=true; msg.textContent='Sending your pre-order…';
+    const payload={
+      _subject:'Pizza pre-order: '+g('name'),
+      _template:'table',
+      _captcha:'false',
+      Name:g('name'),
+      Contact:g('contact'),
+      Order:order.join(', '),
+      Collection:g('date')+' at '+g('time'),
+      Notes:g('notes')||'-'
+    };
+    try{
+      const r=await fetch('https://formsubmit.co/ajax/'+ORDER_EMAIL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify(payload)
+      });
+      const d=await r.json().catch(()=>({}));
+      if(!r.ok || !(d.success===true||d.success==='true')) throw new Error('send failed');
+      form.reset();
+      msg.textContent='Thanks! Your pre-order has been sent — we’ll be in touch to confirm.';
+    }catch(err){
+      msg.innerHTML='Sorry, we couldn’t send that. Please message us on WhatsApp: <a href="https://wa.me/447521044638">07521 044638</a>.';
+    }finally{
+      btn.disabled=false;
+    }
   });
 </script>
 </body>
