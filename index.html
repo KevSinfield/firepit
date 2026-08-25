@@ -523,12 +523,16 @@
 
   // ---- Where the truck is (single source of truth) ----
   // Edit this list to match Amy's calendar. Each entry: date (YYYY-MM-DD),
-  // venue, and the open window in 24h (start/end). The pre-order form only
-  // offers these dates — with collection times limited to each window — and
-  // the "Find us" list is built from the same data, so they can't disagree.
+  // venue, and the open window in 24h (start/end). The "Find us" list shows
+  // every entry below. The pre-order form only offers entries whose
+  // `preorder` flag isn't explicitly false — add `preorder:false` to a
+  // walk-up-only session (e.g. a lunch pitch) to list it without opening
+  // pre-orders for it.
   const SCHEDULE=[
     {date:'2026-07-07', venue:'The Crown Inn, Elsenham',    start:'18:00', end:'20:30'},
-    {date:'2026-07-08', venue:'The Chapel Inn, Coggeshall', start:'17:00', end:'21:00'}
+    {date:'2026-07-08', venue:'The Chapel Inn, Coggeshall', start:'17:00', end:'21:00'},
+    {date:'2026-08-30', venue:'The Chapel Inn, Coggeshall', start:'12:00', end:'16:00', preorder:false},
+    {date:'2026-08-30', venue:'The Chapel Inn, Coggeshall', start:'18:00', end:'20:30'}
   ];
 
   (function(){
@@ -551,16 +555,19 @@
         : '<div class="r"><span class="day">Next dates</span><span class="loc">Coming soon — follow us on socials</span></div>';
     }
 
+    // Only entries that aren't flagged preorder:false can be pre-ordered.
+    const preorderable=upcoming.filter(e=>e.preorder!==false);
+
     const slot=document.getElementById('slot'), time=document.getElementById('time');
     if(slot){
-      if(!upcoming.length){
+      if(!preorderable.length){
         slot.innerHTML='<option value="">No collection dates open right now</option>';
         slot.disabled=true;
       }else{
         slot.innerHTML='<option value="" disabled selected>Choose a day &amp; place…</option>'
-          +upcoming.map((e,i)=>'<option value="'+i+'">'+fmtDate(e.date)+' — '+e.venue+' ('+fmtTime(e.start)+'–'+fmtTime(e.end)+')</option>').join('');
+          +preorderable.map((e,i)=>'<option value="'+i+'">'+fmtDate(e.date)+' — '+e.venue+' ('+fmtTime(e.start)+'–'+fmtTime(e.end)+')</option>').join('');
         slot.addEventListener('change',()=>{
-          const e=upcoming[+slot.value];
+          const e=preorderable[+slot.value];
           if(!e){time.innerHTML='';time.disabled=true;return;}
           const s=e.start.split(':').map(Number), en=e.end.split(':').map(Number);
           let opts='<option value="" disabled selected>Pick a time…</option>';
@@ -572,7 +579,7 @@
         });
       }
     }
-    window.__slots=upcoming;
+    window.__slots=preorderable;
     window.__fmtCollection=(ev,hm)=>ev.venue+', '+fmtDate(ev.date)+' at '+fmtTime(hm);
   })();
 
