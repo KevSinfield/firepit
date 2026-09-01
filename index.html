@@ -532,7 +532,9 @@
     {date:'2026-07-07', venue:'The Crown Inn, Elsenham',    start:'18:00', end:'20:30'},
     {date:'2026-07-08', venue:'The Chapel Inn, Coggeshall', start:'17:00', end:'21:00'},
     {date:'2026-08-30', venue:'The Chapel Inn, Coggeshall', start:'12:00', end:'16:00', preorder:false},
-    {date:'2026-08-30', venue:'The Chapel Inn, Coggeshall', start:'18:00', end:'20:30'}
+    {date:'2026-08-30', venue:'The Chapel Inn, Coggeshall', start:'18:00', end:'20:30'},
+    {date:'2026-09-07', venue:'Sparrows Campsite, Halstead', start:'17:00', end:'20:00'},
+    {date:'2026-09-08', venue:'Sparrows Campsite, Halstead', start:'17:00', end:'20:00'}
   ];
 
   (function(){
@@ -558,7 +560,25 @@
     // Only entries that aren't flagged preorder:false can be pre-ordered.
     const preorderable=upcoming.filter(e=>e.preorder!==false);
 
+    // Orders over 2 pizzas get a coarser (30-min) time grid instead of
+    // 15-min, so big orders naturally land further apart from everyone
+    // else's collection times — there's no real backend booking system
+    // here, so this is a soft nudge, not a hard reservation.
+    const totalQty=()=>[...document.querySelectorAll('.order input[type=number]')]
+      .reduce((sum,i)=>sum+(parseInt(i.value||0,10)||0),0);
+
     const slot=document.getElementById('slot'), time=document.getElementById('time');
+    const populateTimes=e=>{
+      if(!e){time.innerHTML='';time.disabled=true;return;}
+      const step=totalQty()>2?30:15;
+      const s=e.start.split(':').map(Number), en=e.end.split(':').map(Number);
+      let opts='<option value="" disabled selected>Pick a time…</option>';
+      for(let t=s[0]*60+s[1]; t<=en[0]*60+en[1]; t+=step){
+        const hm=pad(Math.floor(t/60))+':'+pad(t%60);
+        opts+='<option value="'+hm+'">'+fmtTime(hm)+'</option>';
+      }
+      time.innerHTML=opts; time.disabled=false;
+    };
     if(slot){
       if(!preorderable.length){
         slot.innerHTML='<option value="">No collection dates open right now</option>';
@@ -566,20 +586,18 @@
       }else{
         slot.innerHTML='<option value="" disabled selected>Choose a day &amp; place…</option>'
           +preorderable.map((e,i)=>'<option value="'+i+'">'+fmtDate(e.date)+' — '+e.venue+' ('+fmtTime(e.start)+'–'+fmtTime(e.end)+')</option>').join('');
-        slot.addEventListener('change',()=>{
-          const e=preorderable[+slot.value];
-          if(!e){time.innerHTML='';time.disabled=true;return;}
-          const s=e.start.split(':').map(Number), en=e.end.split(':').map(Number);
-          let opts='<option value="" disabled selected>Pick a time…</option>';
-          for(let t=s[0]*60+s[1]; t<=en[0]*60+en[1]; t+=15){
-            const hm=pad(Math.floor(t/60))+':'+pad(t%60);
-            opts+='<option value="'+hm+'">'+fmtTime(hm)+'</option>';
-          }
-          time.innerHTML=opts; time.disabled=false;
+        slot.addEventListener('change',()=>populateTimes(preorderable[+slot.value]));
+        // Re-grid the time options if the order size changes after a
+        // day/place has already been picked.
+        document.querySelectorAll('.order input[type=number]').forEach(inp=>{
+          inp.addEventListener('input',()=>{
+            if(slot.value!=='') populateTimes(preorderable[+slot.value]);
+          });
         });
       }
     }
     window.__slots=preorderable;
+    window.__totalQty=totalQty;
     window.__fmtCollection=(ev,hm)=>ev.venue+', '+fmtDate(ev.date)+' at '+fmtTime(hm);
   })();
 
@@ -596,15 +614,16 @@
     const ev=(window.__slots||[])[+slotEl.value];
     if(!ev || !timeEl.value){ msg.textContent='Please choose a collection day, place and time.'; return; }
     const collection=window.__fmtCollection(ev, timeEl.value);
+    const isLarge=(window.__totalQty?window.__totalQty():0)>2;
     const btn=form.querySelector('button[type=submit]');
     btn.disabled=true; msg.textContent='Sending your pre-order…';
     const payload={
-      _subject:'Pizza pre-order: '+g('name'),
+      _subject:'Pizza pre-order: '+g('name')+(isLarge?' (large order)':''),
       _template:'table',
       _captcha:'false',
       Name:g('name'),
       Contact:g('contact'),
-      Order:order.join(', '),
+      Order:order.join(', ')+(isLarge?' — LARGE ORDER, please allow extra time':''),
       Collection:collection,
       Notes:g('notes')||'-'
     };
